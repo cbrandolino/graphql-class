@@ -5,14 +5,15 @@ const urlToId = url => url.split('/')[6];
 const getPokemonIds = pokemon => pokemon.map(({ pokemon: { url }}) => urlToId(url));
 
 const creatureResolver = async (_, { id }, { dataSources }) => {
-  const { name, sprites } = await dataSources.pokemonAPI.getCreature(id);
+  const { name, sprites, weight, stats } = await dataSources.pokemonAPI.getCreature(id);
   return {
     name,
     sprite: sprites.front_default,
     id,
+    weight,
+    stats: stats.map(({ base_stat, stat: { name }}) => ({ name, value: base_stat })) 
   }
 }
-
 const creatureTypeResolver = async (_, { id: typeID }, { dataSources }) =>
   await dataSources.pokemonAPI.getCreatureType(typeID);
 

@@ -13,6 +13,13 @@ const typeDefs = gql`
     name: String,
     sprite: String,
     creatureTypes: [CreatureType],
+    weight: Int,
+    stats: [Stat]
+  }
+
+  type Stat {
+    name: String,
+    value: Int,
   }
 
   type CreatureType {
