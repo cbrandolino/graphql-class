@@ -8,6 +8,10 @@ const typeDefs = gql`
     pokedex(id: ID!): Pokedex,
   }
 
+  type Mutation {
+    addCreature(pokedexId: ID!, creatureId: ID!): ID,
+  }
+
   type Creature {
     id: ID!,
     name: String,
