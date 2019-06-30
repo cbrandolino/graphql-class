@@ -5,6 +5,7 @@ const typeDefs = gql`
     creatures: [Creature],
     creature(id: ID!): Creature,
     creatureType(id: ID!): CreatureType,
+    pokedex(id: ID!): Pokedex,
   }
 
   type Creature {
@@ -15,6 +16,12 @@ const typeDefs = gql`
   }
 
   type CreatureType {
+    id: ID!,
+    name: String,
+    creatures: [Creature],
+  }
+
+  type Pokedex {
     id: ID!,
     name: String,
     creatures: [Creature],

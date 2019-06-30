@@ -1,0 +1,39 @@
+{
+  "pokedex": [
+    {
+      "id": 1,
+      "title": "My Pokedex",
+      "creatures": [
+        1
+      ]
+    },
+    {
+      "id": 1,
+      "title": "My Pokedex",
+      "creatures": [
+        1
+      ]
+    },
+    {
+      "id": 1,
+      "title": "My Pokedex",
+      "creatures": [
+        1
+      ]
+    },
+    {
+      "id": 1,
+      "title": "My Pokedex",
+      "creatures": [
+        1
+      ]
+    },
+    {
+      "id": 1,
+      "title": "My Pokedex",
+      "creatures": [
+        1
+      ]
+    }
+  ]
+}
