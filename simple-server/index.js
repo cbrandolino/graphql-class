@@ -1,3 +1,24 @@
+const cors = require('micro-cors')();
+const { ApolloServer, gql } = require('apollo-server-micro');
+
+const typeDefs = gql`
+  type Query {
+    sayHello: String
+  }
+`;
+
+const resolvers = {
+  Query: {
+    sayHello(parent, args, context) {
+      return 'Hello World!';
+    },
+  },
+};
+
+const apolloServer = new ApolloServer({ typeDefs, resolvers });
+module.exports = cors(apolloServer.createHandler()); 
+
+/*
 const cors = require('cors');
 const express = require('express');
 const { ApolloServer, gql } = require('apollo-server-express');
@@ -23,3 +44,4 @@ const apolloServer = new ApolloServer({
 apolloServer.applyMiddleware({ app });
 app.use(cors());
 app.listen(port, () => console.log(`server running on port ${port}`));
+*/

@@ -2,23 +2,22 @@
   "name": "simple-server",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "index.js",
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "micro"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "apollo-datasource-rest": "^0.5.0",
-    "apollo-server-express": "^2.6.7",
-    "cors": "^2.8.5",
-    "express": "^4.17.1",
-    "graphql": "^14.3.1",
-    "graphql-tools": "^4.0.5",
-    "lowdb": "^1.0.0"
+    "apollo-server-micro": "^2.6.7",
+    "graphql": "^14.4.1",
+    "lowdb": "^1.0.0",
+    "micro": "^9.3.4",
+    "micro-cors": "^0.1.1"
   },
   "devDependencies": {
-    "@now/node-server": "^0.8.1"
+    "@now/node": "^0.8.1"
   }
 }
