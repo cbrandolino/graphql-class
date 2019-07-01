@@ -1,20 +1,22 @@
 const low = require('lowdb');
-const FileSync = require('lowdb/adapters/FileSync');
+const Memory = require('lowdb/adapters/Memory');
 
-const adapter = new FileSync('./db.json');
+const adapter = new Memory();
 const db = low(adapter);
 
+db.defaults({ pokedex: [{ id: '1', name: 'My Pokedex', creatures: []}] })
+  .write()
+
 const getPokedex = (id) => db.get('pokedex')
-    .find({ id: 1 })
+    .find({ id: id })
     .value()
 
 const addPokemon = (pokedexId, pokemonId) => {
     const creatures = getPokedex(pokedexId).creatures;
-    db.get('pokedex')
-        .find({ id: +pokedexId })
-        .assign({ creatures: [ ...creatures, +pokemonId ]})
+    return db.get('pokedex')
+        .find({ id: pokedexId })
+        .assign({ creatures: [ ...creatures, pokemonId ]})
         .write();
-    return pokedexId;
 }
 
 module.exports = {
