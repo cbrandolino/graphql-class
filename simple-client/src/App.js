@@ -1,48 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { ApolloProvider, Query } from "react-apollo";
+import Home from './Home.js';
+import Pokedex from './Pokedex.js';
+import ApolloClient from "apollo-boost";
 
-const useGreeting = () => {
-  const [ greeting, setGreeting ] = useState([]);
-  const fetchGreeting = async () => {
-    const response = await fetch('http://localhost.thenbs.io:9000/graphql', {
-      method: 'POST',
-      headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({ query: '{ greeting }' })
-    });
-    const parsedResponse = await response.json();
-    setGreeting(parsedResponse);
-  };
+const client = new ApolloClient({
+  uri: "https://simple-server.cbrandolino.now.sh/graphql"
+});
 
-  useEffect(() => {
-    fetchGreeting();
-  }, []);
-  return greeting;
-};
-
-
-function App() {
-
-  const greeting = useGreeting();
-
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          { JSON.stringify(greeting) }
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () =>
+  <ApolloProvider client={client}>
+    <Router>
+      <Route exact path="/" component={Home} />
+      <Route path="/pokedex/:id" component={Pokedex} />
+    </Router>
+  </ApolloProvider>;
 
 export default App;

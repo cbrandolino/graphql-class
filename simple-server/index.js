@@ -14,4 +14,10 @@ const apolloServer = new ApolloServer({
   introspection: true,
 });
 
-module.exports = cors(apolloServer.createHandler()); 
+module.exports = module.exports = cors((req, res) => {
+  if (req.method === 'OPTIONS') {
+    res.end()
+    return
+  }
+  return apolloServer.createHandler()(req, res)
+}); 
