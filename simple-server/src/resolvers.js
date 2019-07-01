@@ -1,4 +1,4 @@
-const { getPokedex, addPokemon } = require('./Pokedex');
+const { getPokedex, addPokemon, getPokedexes, addPokedex } = require('./Pokedex');
 
 const urlToId = url => url.split('/')[6];
 
@@ -32,11 +32,14 @@ const resolvers = {
     pokedex: async (_, { id: pokedexId }) => {
         const pokedex = await getPokedex(pokedexId);
         return pokedex;
-    }
+    },
+    pokedexes: getPokedexes,
   },
   Mutation: {
     addCreature: (_, { pokedexId, creatureId }) =>
       addPokemon(pokedexId, creatureId),
+    addPokedex: (_, { name }) =>
+      addPokedex(name),
   },
   Pokedex: {
     creatures: async ({ creatures }, _, context) => await creaturesResolver(creatures, context),

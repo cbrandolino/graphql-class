@@ -1,3 +1,4 @@
+const shortid = require('shortid');
 const low = require('lowdb');
 const Memory = require('lowdb/adapters/Memory');
 
@@ -8,8 +9,20 @@ db.defaults({ pokedex: [{ id: '1', name: 'My Pokedex', creatures: []}] })
   .write()
 
 const getPokedex = (id) => db.get('pokedex')
-    .find({ id: id })
+    .find({ id })
     .value()
+
+const addPokedex = (name) => {
+    const id = shortid.generate()
+    db.get('pokedex')
+        .push({ id, name })
+        .write();
+    return getPokedex(id);
+}
+
+const getPokedexes = () =>
+    db.get('pokedex')
+        .value();
 
 const addPokemon = (pokedexId, pokemonId) => {
     const creatures = getPokedex(pokedexId).creatures;
@@ -22,4 +35,6 @@ const addPokemon = (pokedexId, pokemonId) => {
 module.exports = {
     getPokedex,
     addPokemon,
-}
+    getPokedexes,
+    addPokedex,
+};
