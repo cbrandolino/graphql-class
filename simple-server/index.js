@@ -1,5 +1,5 @@
 const cors = require('micro-cors')();
-const { ApolloServer, gql } = require('apollo-server-micro');
+const { ApolloServer } = require('apollo-server-micro');
 const PokemonAPI = require('./src/PokemonAPI');
 const typeDefs = require('./src/typeDefs');
 const resolvers = require('./src/resolvers');

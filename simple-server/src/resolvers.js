@@ -5,13 +5,14 @@ const urlToId = url => url.split('/')[6];
 const getPokemonIds = pokemon => pokemon.map(({ pokemon: { url }}) => urlToId(url));
 
 const creatureResolver = async (_, { id }, { dataSources }) => {
-  const { name, sprites, weight, stats } = await dataSources.pokemonAPI.getCreature(id);
+  const { name, sprites, weight, stats, types } = await dataSources.pokemonAPI.getCreature(id);
   return {
     name,
     sprite: sprites.front_default,
     id,
     weight,
-    stats: stats.map(({ base_stat, stat: { name }}) => ({ name, value: base_stat })) 
+    stats: stats.map(({ base_stat, stat: { name }}) => ({ name, value: base_stat })),
+    types: types.map(({ type: { url }}) => urlToId(url)),
   }
 }
 const creatureTypeResolver = async (_, { id: typeID }, { dataSources }) =>
@@ -44,8 +45,8 @@ const resolvers = {
       await creaturesResolver(getPokemonIds(pokemon), context),
   },
   Creature: {
-    creatureTypes: async ({ creatureTypes }, _, context) =>
-      await creatureTypesResolver(creatureTypes.map(({ id }) => id), context)
+    creatureTypes: async ({ types }, _, context) =>
+      await creatureTypesResolver(types, context)
   }
 }
 

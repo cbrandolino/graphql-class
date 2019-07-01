@@ -9,7 +9,7 @@ class PokemonAPI extends RESTDataSource {
     async getCreature(id = null) {
         return this.get(`pokemon/${id}`);
     }
-
+    
     async getCreatureType(id) {
         return this.get(`type/${id}`);
     }
