@@ -2,7 +2,7 @@ const { gql } = require('apollo-server-micro');
 
 const typeDefs = gql`
   type Query {
-    creatures: [Creature],
+    creatures(from: Int): [BaseCreature],
     creature(id: ID!): Creature,
     creatureType(id: ID!): CreatureType,
     pokedex(id: ID!): Pokedex,
@@ -10,6 +10,12 @@ const typeDefs = gql`
 
   type Mutation {
     addCreature(pokedexId: ID!, creatureId: ID!): Pokedex,
+  }
+
+  type BaseCreature {
+    id: ID!,
+    name: String,
+    creature: Creature,
   }
 
   type Creature {

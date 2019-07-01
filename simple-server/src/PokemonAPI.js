@@ -6,6 +6,11 @@ class PokemonAPI extends RESTDataSource {
         this.baseURL = 'https://pokeapi.co/api/v2/';
     }
 
+    async getCreatures(from = 0) {
+        const { results } = await this.get(`pokemon`, { offset: from });
+        return results;
+    }
+
     async getCreature(id = null) {
         return this.get(`pokemon/${id}`);
     }

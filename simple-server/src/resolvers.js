@@ -27,6 +27,7 @@ const creaturesResolver = (creatures, context) =>
 const resolvers = {
   Query: {
     creature: creatureResolver,
+    creatures: async (_, { from }, { dataSources }) => await dataSources.pokemonAPI.getCreatures(from),
     creatureType: creatureTypeResolver,
     pokedex: async (_, { id: pokedexId }) => {
         const pokedex = await getPokedex(pokedexId);
@@ -47,7 +48,10 @@ const resolvers = {
   Creature: {
     creatureTypes: async ({ types }, _, context) =>
       await creatureTypesResolver(types, context)
-  }
+  },
+  BaseCreature: {
+    creature: ({ url }, _, context) => creatureResolver(null, { id: urlToId(url)}, context),
+  },
 }
 
 module.exports = resolvers;
