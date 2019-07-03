@@ -1,35 +1,21 @@
 import React from 'react';
-import gql from "graphql-tag";
-import { Link } from "react-router-dom";
-import GraphQuery from './GraphQuery';
+import { Link } from 'react-router-dom';
 
 
-const query = gql`
-{
-  pokedexes {
-    name,
-    id,
-    creatures {
-      name
-    }
-  }
-}
-`;
+const pokedexes = [
+  { id: 1, name: 'My pokedex ' },
+];
 
-const PokedexList = ({ pokedexes }) =>
+const Home = () =>
   <ul>
     { 
       pokedexes.map(({ name, id }) =>
-        <li>
+        <li key={id}>
           <Link to={`/pokedex/${id}`}>
             {name}
           </Link>
-        </li>)}
+        </li>)
+    }
   </ul>;
-
-const Home = () =>
-  <GraphQuery query={query}>
-    <PokedexList />
-  </GraphQuery>;
 
 export default Home;
