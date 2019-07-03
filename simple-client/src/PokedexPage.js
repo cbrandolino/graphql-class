@@ -1,9 +1,11 @@
 import React from 'react';
+
+import Container from '@material-ui/core/Container';
 import Pokedex from './components/Pokedex';
 
 const PokedexPage = ({ match: { params: { id }}}) =>
-  <div className="Pokedex">
+  <Container>
     <Pokedex />
-  </div>;
+  </Container>;
 
 export default PokedexPage;
