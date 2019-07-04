@@ -3,6 +3,7 @@ import React from 'react';
 
 // Import Spectacle Core tags
 import {
+  Appear,
   Deck,
   Heading,
   ListItem,
@@ -45,12 +46,24 @@ export default class Presentation extends React.Component {
           </Heading>
 
           <List>
-            <ListItem>What is graphql</ListItem>
-            <ListItem>Which problems does it solve</ListItem>
-            <ListItem>Graphql architecture overview</ListItem>
-            <ListItem>Adding graphql to an existing API with Apollo</ListItem>
-            <ListItem>Mixing different data sources</ListItem>
-            <ListItem>Client-side development</ListItem>
+            <Appear>
+              <ListItem>What is graphql</ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>Which problems does it solve</ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>Graphql architecture overview</ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>Adding graphql to an existing API with Apollo</ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>Mixing different data sources</ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>Client-side development</ListItem>
+            </Appear>
           </List>
         </Slide>
         <Slide bgColor="tertiary">
@@ -75,10 +88,18 @@ export default class Presentation extends React.Component {
             What's wrong with REST?
           </Heading>
           <List>
-            <ListItem>Overfetching</ListItem>
-            <ListItem>Underfetching</ListItem>
-            <ListItem>Connecting multiple services</ListItem>
-            <ListItem>Friction when adding new use cases</ListItem>
+            <Appear>
+              <ListItem>Overfetching</ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>Underfetching</ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>Connecting multiple services</ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>Friction when adding new use cases</ListItem>
+            </Appear>
           </List>
         </Slide>
         <Slide>
