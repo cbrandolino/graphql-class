@@ -1,9 +1,9 @@
 import React from 'react';
+import { gql } from 'apollo-boost';
+import { Query } from 'react-apollo';
 
 import Container from '@material-ui/core/Container';
-
 import PokedexList from './components/PokedexList';
-import { gql } from 'apollo-boost';
 
 const pokedexes = [
   { id: 1, name: 'My pokedex ' },

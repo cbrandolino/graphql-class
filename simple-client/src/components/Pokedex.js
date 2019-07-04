@@ -1,7 +1,5 @@
 import React, { Fragment } from 'react';
 import List from '@material-ui/core/List';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 
 import Pokemon from './Pokemon';
