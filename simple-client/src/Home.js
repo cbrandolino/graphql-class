@@ -5,13 +5,24 @@ import { Query } from 'react-apollo';
 import Container from '@material-ui/core/Container';
 import PokedexList from './components/PokedexList';
 
-const pokedexes = [
-  { id: 1, name: 'My pokedex ' },
-];
+const query = gql`
+  {
+    pokedexes {
+      name,
+      id
+    }
+  }
+  `;
+
 
 const Home = () =>
   <Container>
-    <PokedexList pokedexes={pokedexes} />
+    <Query query={query}>
+      {
+        ({ data, loading, error }) =>
+          <PokedexList loading={loading} pokedexes={data.pokedexes} />
+      }
+    </Query> 
   </Container>;
 
 export default Home;

@@ -1,29 +1,9 @@
 import React, { Fragment } from 'react';
 import List from '@material-ui/core/List';
-import Typography from '@material-ui/core/Typography';
 
 import Pokemon from './Pokemon';
 
-const name = 'My Pokedex';
-const creatures = [
-  {
-    id: 1,
-    name: 'bulbasaur',
-    sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png',
-  },
-  {
-    id: 3,
-    name: 'venusaur',
-    sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png',
-  },
-  {
-    id: 45,
-    name: 'vileplume',
-    sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/45.png',
-  },
-];
-
-const Pokedex = () =>
+const Pokedex = ({ name, creatures = []}) =>
   <Fragment>
     { name }
     <List>

@@ -11,7 +11,7 @@ const Pokemon = ({ name, sprite, stats }) =>
     </ListItemAvatar>
     <ListItemText
       primary={name}
-      secondary={stats.map(({name, value}) => <Fragment><strong>{ name }</strong>: { value }; </Fragment>)}
+      secondary={stats.map(({name, value}) => <Fragment key={name}><strong>{ name }</strong>: { value }; </Fragment>)}
     />
   </ListItem>;
 

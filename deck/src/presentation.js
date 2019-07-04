@@ -66,6 +66,14 @@ export default class Presentation extends React.Component {
             </Appear>
           </List>
         </Slide>
+        <Slide>
+          <Heading size={4} textColor="secondary" caps>
+            API example: Pokemon api
+          </Heading>
+          <Heading size={5} textColor="tertiary">
+            https://pokeapi.co/
+          </Heading>
+        </Slide>
         <Slide bgColor="tertiary">
           <Heading size={1} fit textColor="primary" caps>
             What is GraphQL?
@@ -74,14 +82,6 @@ export default class Presentation extends React.Component {
             a query language for APIs.
           </Heading>
           <Image src="whatIsGraphql.png" />
-        </Slide>
-        <Slide>
-          <Heading size={4} textColor="secondary" caps>
-            API example: Pokemon api
-          </Heading>
-          <Heading size={5} textColor="tertiary">
-            https://pokeapi.co/
-          </Heading>
         </Slide>
         <Slide>
           <Heading size={4} textColor="tertiary" caps>
